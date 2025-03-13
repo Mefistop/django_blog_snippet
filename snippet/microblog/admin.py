@@ -23,7 +23,7 @@ class BloggerModelAdmin(admin.ModelAdmin):
 @admin.register(Blog)
 class BlogModelAdmin(admin.ModelAdmin):
     actions = [mark_unarchived, mark_archived]
-    list_display = 'title', 'author', 'created_at', 'content', 'is_archived'
+    list_display = 'title', 'author', 'created_at', 'short_content', 'is_archived'
 
     def short_content(self, obj: Blog):
         if len(obj.content) > 50:

@@ -1,1 +1,10 @@
-{}
+{% extends 'base_generic.html' %}
+{% block title %}
+<title>All boggers</title>
+{% endblock %}
+{% block content %}
+<h1>All bloggers</h1>
+{% for blogger in profile_list %}
+<li><a href="{{ blogger.get_absolute_url }}">{{blogger.user.username}}</a></li>
+{% endfor %}
+{% endblock %}
