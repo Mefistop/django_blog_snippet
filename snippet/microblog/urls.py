@@ -16,7 +16,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index, BlogListView, BloggerListView, BlogDetailView, BloggerDetailView
+from .views import index, BlogListView, BloggerListView, BlogDetailView, BloggerDetailView, CommentCreateView
+
+app_name = "microblog"
 
 urlpatterns = [
     path('', index, name='index'),
@@ -24,5 +26,5 @@ urlpatterns = [
     path('blogs/<int:pk>', BlogDetailView.as_view(), name='blog-detail'),
     path('bloggers/', BloggerListView.as_view(), name='blogger-list'),
     path('bloggers/<int:pk>', BloggerDetailView.as_view(), name='blogger-detail'),
-
+    path('blogs/<int:pk>/create_comment', CommentCreateView.as_view(), name='comment-create'),
 ]

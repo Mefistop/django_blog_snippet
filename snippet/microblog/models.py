@@ -18,7 +18,7 @@ class Profile(models.Model):
         return f"User {self.user.username}"
 
     def get_absolute_url(self):
-        return reverse('blogger-detail', args=[str(self.id)])
+        return reverse('microblog:blogger-detail', args=[str(self.id)])
 
 
 class Blog(models.Model):
@@ -44,7 +44,7 @@ class Blog(models.Model):
         return f'Blog "{self.title}" by {self.author.user.username}'
 
     def get_absolute_url(self):
-        return reverse('blog-detail', args=[str(self.id)])
+        return reverse('microblog:blog-detail', args=[str(self.id)])
 
 
 class Comment(models.Model):
@@ -54,7 +54,7 @@ class Comment(models.Model):
 
     author = models.ForeignKey(Profile, on_delete=models.CASCADE)
     blog = models.ForeignKey(Blog, on_delete=models.CASCADE, related_name='comments')
-    content = models.CharField(null=False, max_length=1000)
+    content = models.TextField(null=False, max_length=1000, help_text='Enter comment about blog here')
     created_at = models.DateTimeField(auto_now_add=True)
     is_archived = models.BooleanField(default=False)
 

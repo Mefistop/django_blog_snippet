@@ -19,7 +19,7 @@
     <hr>
     {% endfor %}
     {% if user.is_authenticated %}
-    <a href="#">Add new comment</a>
+    <a href="{% url 'microblog:comment-create' pk=blog.pk %}">Add new comment</a>
     {% else %}
     <p><a href="#">Login</a> to add comment</p>
     {% endif %}
