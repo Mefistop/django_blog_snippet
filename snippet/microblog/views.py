@@ -1,10 +1,9 @@
 from django.shortcuts import render
-from django.template.context_processors import request
 from django.urls import reverse_lazy
-from django.views import View
 from django.views.generic import ListView, DetailView, CreateView
 from .models import Blog, Profile, Comment
 from django.db import models
+from django.contrib.auth import logout
 
 
 # Create your views here.
@@ -60,3 +59,4 @@ class CommentCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('microblog:blog-detail', kwargs={'pk':self.kwargs['pk']})
+
