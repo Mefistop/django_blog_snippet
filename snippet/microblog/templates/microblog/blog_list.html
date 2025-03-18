@@ -7,7 +7,7 @@
 <h1>All blogs</h1>
 {% for blog in blog_list %}
 <li>
-    <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a> ({{ blog.created_at|date:"M. d, Y" }}) - <a href="#">{{blog.author.user.username}}</a>
+    <a href="{{ blog.get_absolute_url }}">{{blog.title}}</a> ({{ blog.created_at|date:"M. d, Y" }}) - <a href="{{ blog.author.get_absolute_url }}">{{blog.author.user.username}}</a>
 </li>
 {% endfor %}
 

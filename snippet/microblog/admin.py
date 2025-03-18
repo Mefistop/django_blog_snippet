@@ -37,6 +37,6 @@ class CommentModelAdmin(admin.ModelAdmin):
     list_display = 'blog', 'author', 'short_content', 'created_at', 'is_archived'
 
     def short_content(self, obj: Comment) -> str:
-        if len(obj.content) > 50:
-            return obj.content[:50] + '...'
+        if len(obj.content) > 75:
+            return obj.content[:75] + '...'
         return obj.content

@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render
 from django.urls import reverse_lazy
 from django.views.generic import ListView, DetailView, CreateView
@@ -16,6 +17,7 @@ def index(request):
 
 class BlogListView(ListView):
     model = Blog
+    paginate_by = 5
 
     def get_queryset(self):
         queryset = super().get_queryset()
@@ -42,7 +44,7 @@ class BloggerDetailView(DetailView):
     queryset = Profile.objects.select_related('user').prefetch_related("blogs").all()
 
 
-class CommentCreateView(CreateView):
+class CommentCreateView(LoginRequiredMixin, CreateView):
     model = Comment
     fields = 'content',
 
