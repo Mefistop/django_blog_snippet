@@ -26,14 +26,15 @@ class Blog(models.Model):
     class Meta:
         ordering = ['-created_at']
 
-    title = models.CharField(null=False, max_length=200, blank=False)
+    title = models.CharField(null=False, max_length=200, blank=False, help_text='Enter title of blog.')
     author = models.ForeignKey(Profile, on_delete=models.CASCADE, related_name='blogs')
-    content = models.TextField(max_length=1000, null=False, blank=False)
+    content = models.TextField(max_length=1000, null=False, blank=False, help_text='Enter content of blog.')
     created_at = models.DateTimeField(auto_now_add=True)
     is_archived = models.BooleanField(default=False)
 
     def clean(self):
-        if not self.author.is_blogger:
+        """Check - only profile with mark 'is_blogger' can post blog"""
+        if hasattr(self, 'author') and self.author.is_blogger == False:
             raise ValidationError("Only bloggers can create a blog.")
 
     def save(self, *args, **kwargs):

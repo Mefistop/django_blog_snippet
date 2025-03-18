@@ -37,7 +37,12 @@
                 <li><a href="{% url 'login' %}">Login</a></li>
                 {% endif %}
             </ul>
-
+            {% if user.is_authenticated %}
+            <hr>
+            <ul class="sidebar-nav">
+                <li><a href="{% url 'microblog:blog-create' %}">Create new blog</a></li>
+            </ul>
+            {% endif %}
           {% endblock %}
         </div>
 
