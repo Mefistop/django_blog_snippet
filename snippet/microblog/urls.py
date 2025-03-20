@@ -14,18 +14,35 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
+
 from django.urls import path
-from .views import index, BlogListView, BloggerListView, BlogDetailView, BloggerDetailView, CommentCreateView, BlogCreateView
+
+from .views import (
+    BlogCreateView,
+    BlogDeleteView,
+    BlogDetailView,
+    BloggerDetailView,
+    BloggerListView,
+    BlogListView,
+    BlogUpdateView,
+    CommentCreateView,
+    index,
+)
 
 app_name = "microblog"
 
 urlpatterns = [
-    path('', index, name='index'),
-    path('blogs/', BlogListView.as_view(), name='blog-list'),
-    path('blogs/<int:pk>', BlogDetailView.as_view(), name='blog-detail'),
-    path('blogs/create', BlogCreateView.as_view(), name='blog-create'),
-    path('bloggers/', BloggerListView.as_view(), name='blogger-list'),
-    path('bloggers/<int:pk>', BloggerDetailView.as_view(), name='blogger-detail'),
-    path('blogs/<int:pk>/create_comment', CommentCreateView.as_view(), name='comment-create'),
+    path("", index, name="index"),
+    path("blogs/", BlogListView.as_view(), name="blog-list"),
+    path("blogs/<int:pk>", BlogDetailView.as_view(), name="blog-detail"),
+    path("blogs/create", BlogCreateView.as_view(), name="blog-create"),
+    path("blogs/<int:pk>/update", BlogUpdateView.as_view(), name="blog-update"),
+    path("blogs/<int:pk>/delete", BlogDeleteView.as_view(), name="blog-delete"),
+    path("bloggers/", BloggerListView.as_view(), name="blogger-list"),
+    path("bloggers/<int:pk>", BloggerDetailView.as_view(), name="blogger-detail"),
+    path(
+        "blogs/<int:pk>/create_comment",
+        CommentCreateView.as_view(),
+        name="comment-create",
+    ),
 ]

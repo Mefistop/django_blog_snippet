@@ -10,6 +10,13 @@
 <p><b>Author:</b><a href="#"> {{ blog.author.user.username }}</a></p>
 <p><b>Description:</b></p>
 <p>{{ blog.content }}</p>
+<div class="mt-3">
+    {% if user == blog.author.user %}
+    <a href="{% url 'microblog:blog-update' pk=blog.pk %}" class="btn btn-primary me-2">Edit blog</a>
+    <a href="{% url 'microblog:blog-delete' pk=blog.pk %}" class="btn btn-danger">Delete blog</a>
+    {% endif %}
+</div>
+
 
 <div style="margin-left:20px;margin-top:20px">
     <h3> Comments</h3>
@@ -18,11 +25,14 @@
     <p>{{ comment.author.user.username }} ({{ comment.created_at|date:"M. d, Y, h:i a" }}) - {{ comment.content }}</p>
     <hr>
     {% endfor %}
-    {% if user.is_authenticated %}
-    <a href="{% url 'microblog:comment-create' pk=blog.pk %}">Add new comment</a>
-    {% else %}
-    <p><a href="#">Login</a> to add comment</p>
-    {% endif %}
+    <div class="mt-3">
+        {% if user.is_authenticated %}
+        <a href="{% url 'microblog:comment-create' pk=blog.pk %}" class="btn btn-primary me-2">Add new comment</a>
+        {% else %}
+        <p><a href="{% url 'login' %}" class="btn btn-primary me-2">Login</a> to add comment</p>
+        {% endif %}
+    </div>
+
 </div>
 
 {% endblock %}

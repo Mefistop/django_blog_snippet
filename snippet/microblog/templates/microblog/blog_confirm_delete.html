@@ -1,0 +1,10 @@
+{% extends 'base_generic.html' %}
+{% block content %}
+<h4>Are you sure you want to delele blog by title: "{{object.title}}" </h4>
+<a href="{{ object.get_absloute_url }}">Back</a>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+{% endblock %}
