@@ -45,7 +45,12 @@ class BlogDetailView(DetailView):
     )
 
 
-class BlogCreateView(LoginRequiredMixin, CreateView):
+class BlogCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
+
+    def test_func(self):
+        user = self.request.user
+        return user.profile.is_blogger == True
+
     model = Blog
     fields = ("title", "content")
 
