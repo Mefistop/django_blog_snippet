@@ -63,7 +63,7 @@ class BlogCreateView(LoginRequiredMixin, UserPassesTestMixin, CreateView):
         return reverse_lazy("microblog:blog-detail", kwargs={"pk": self.object.pk})
 
 
-class BlogUpdateView(UserPassesTestMixin, LoginRequiredMixin, UpdateView):
+class BlogUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         blog = self.get_object()
