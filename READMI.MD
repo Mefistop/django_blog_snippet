@@ -40,8 +40,7 @@
 Склонируйте репозиторий на ваш компьютер:
 
 ```bash
-git clone https://github.com/your-repository/diy-django-mini-blog.git
-cd diy-django-mini-blog
+git clone https://github.com/Mefistop/django_blog_snippet.git
 ```
 
 ### 2. Настройка переменных окружения
@@ -175,4 +174,4 @@ docker-compose exec web python manage.py test microblog.tests
    ```
 
 ## Автор
-Этот проект был создан [] как часть учебного задания по Django.
+Этот проект был создан как часть учебного задания по Django.
