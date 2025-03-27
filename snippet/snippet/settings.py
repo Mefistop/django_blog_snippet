@@ -74,11 +74,11 @@ WSGI_APPLICATION = 'snippet.wsgi.application'
 
 
 # Database
-# https://docs.djangoproject.com/en/5.1/ref/settings/#databases
+# # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "NAME": os.getenv("DB_NAME", "megano_db"),  # имя базы данных
+        "NAME": os.getenv("DB_NAME", "snippet_db"),  # имя базы данных
         "USER": os.getenv("DB_USER", "admin"),  # имя пользователя
         "PASSWORD": os.getenv("DB_PASSWORD", "admin"),  # пароль
         "HOST": os.getenv("DB_HOST", "db"),  # или IP-адрес сервера базы данных

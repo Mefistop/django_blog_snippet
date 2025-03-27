@@ -69,7 +69,7 @@ DJANGO_SUPERUSER_EMAIL=admin@example.com
 docker compose up --build
 ```
 
-Это создаст и запустит контейнеры для Django, PostgreSQL и Nginx. После завершения сборки проект будет доступен по адресу:
+Это создаст и запустит контейнеры для Django, PostgreSQL. После завершения сборки проект будет доступен по адресу:
 ```env
 http://localhost:8000/
 ```
